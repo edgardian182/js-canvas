@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <style>
+    canvas {
+      border: solid;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas">
+    Your browser do not support canvas
+  </canvas>
+
+  <script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext('2d');
+
+    // ctx.arc(x,y,radius,initial_angle,final_angle,start_point)
+    // angle in radians
+
+    ctx.arc(70,40,10,to_radians(0),to_radians(360),true);
+    ctx.stroke();
+    ctx.moveTo(50,20)
+    ctx.arc(70,40,30,to_radians(225),to_radians(135),false);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(210,40,10,to_radians(0),to_radians(360),true);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(210,40,30,to_radians(45),to_radians(-45),false);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(140,80,20,to_radians(0),to_radians(360),true);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(140,90,50,to_radians(0),to_radians(180),false);
+    ctx.stroke();
+
+
+    function to_radians(degrees) {
+      return (degrees*Math.PI)/180;
+    }
+  </script>
+
+</body>
+</html>
