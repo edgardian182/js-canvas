@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <style>
+    canvas {
+      border: solid;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas">
+    Your browser do not support canvas
+  </canvas>
+
+  <script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext('2d');
+
+    // ctx.arc(x,y,radius,initial_angle,final_angle,start_point)
+    // angle in radians
+    ctx.arc(20,20,10,0,7);
+    ctx.fill();
+
+    ctx.arc(50,50,20,to_radians(0),to_radians(360),true)
+    ctx.fill();
+    ctx.strokeStyle = "red"
+    ctx.arc(120,60,40,to_radians(0),to_radians(360),true)
+    ctx.stroke();
+
+    function to_radians(degrees) {
+      return (degrees*Math.PI)/180;
+    }
+  </script>
+
+</body>
+</html>
