@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <style>
+    canvas {
+      border: solid;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas">
+    Your browser do not support canvas
+  </canvas>
+  <input type="button" value="Erase" id="btn">
+  <script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext('2d');
+    var btn = document.getElementById('btn');
+    ctx.globalAlpha = 0.5;
+    ctx.fillStyle = "red";
+    ctx.fillRect(10,10,50,50);
+    ctx.strokeStyle = "blue";
+    ctx.lineWidth = 10;
+    ctx.strokeRect(80,60, 50,50);
+
+    btn.addEventListener('click', function(){
+      erase(canvas,ctx)
+    })
+
+    function erase(canvas, ctx){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+    }
+
+  </script>
+
+</body>
+</html>
