@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <style>
+    canvas {
+      border: solid;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas">
+    Your browser do not support canvas
+  </canvas>
+
+  <script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = "red";
+    ctx.fillRect(10,10,50,50);
+    ctx.strokeStyle = "blue";
+    ctx.strokeRect(80,60, 50,50);
+
+  </script>
+
+</body>
+</html>
