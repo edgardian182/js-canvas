@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <style>
+    canvas {
+      border: solid;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas">
+    Your browser do not support canvas
+  </canvas>
+
+  <img src="r62017white.png" id="img" style="display:none;">
+
+  <script>
+    window.addEventListener("load", init())
+
+    function init() {
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext('2d');
+      var img = document.getElementById("img");
+
+      // ctx.drawImage(img,X,Y,width,height)
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, canvas.width,canvas.height)
+      }
+     }
+  </script>
+
+</body>
+</html>
