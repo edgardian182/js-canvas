@@ -38,6 +38,8 @@
     var intervalo;
     var img1 = document.getElementById("img1");
     var img2 = document.getElementById("img2");
+    var fondo = new Image();
+    fondo.src = "carretera.jpg";
 
     window.addEventListener("load", init());
 
@@ -51,6 +53,9 @@
       //   ctx.drawImage(img1,x,y,img1.width/8, img1.height/8)
       // }
 
+
+
+
       btn.addEventListener("click", function(){
         if (iniciar) {
           this.value = "Iniciar";
@@ -61,18 +66,22 @@
           iniciar = true;
           this.value = "Detener";
           intervalo = window.setInterval(function(){animateImage(canvas,ctx)
-          }, 70)
+          }, 100)
         }
       });
 
       img1.onload = function(){
+        ctx.drawImage(fondo,-20,-160)
         setImage(canvas,ctx,img1,x,y,img1.width/8, img1.height/8)
+
       }
 
     }
 
     function setImage(canvas,ctx,img,x,y,width,height){
+      // canvas.width = canvas.width se encarga de limpiar el canvas para evitar superposicion de imagenes por lo que toca recargar propiedades e imagenes
       canvas.width = canvas.width;
+      ctx.drawImage(fondo,-20,-160)
       ctx.drawImage(img,x,y,width,height);
     }
 
