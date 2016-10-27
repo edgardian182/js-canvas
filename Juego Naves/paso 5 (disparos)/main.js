@@ -90,6 +90,7 @@ function moveSpaceship(){
   }
 
   // -----------------PARA PARTE 5------------------
+  // Ejecutamos los disparos cada que se presiona la barra espaciadora
   if(teclado[32]){
     if(!teclado.fire) {
       fire();
