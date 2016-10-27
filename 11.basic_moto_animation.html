@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <style>
+    canvas {
+      border: solid;
+      height: 300px;
+      width: 600px;
+    }
+
+    #btn {
+      border: 5px;
+      padding: 10px 20px;
+      background: red;
+      color: white;
+      font-size: 20px;
+      box-shadow: 4px 4px 5px #888888;
+      display: inline-block;
+      display: block;
+      position: relative;
+      left: 510px;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas">
+    Your browser do not support canvas
+  </canvas>
+  <input type="button" id="btn" value="Iniciar">
+
+  <img src="r62017white.png" id="img1" style="display: none">
+  <img src="r62017white2.png" id="img2" style="display: none">
+  <script>
+    var x = 0, y = 45, velocidad = 5, distancia = velocidad, iniciar = false, ida = true;
+    var intervalo;
+    var img1 = document.getElementById("img1");
+    var img2 = document.getElementById("img2");
+
+    window.addEventListener("load", init());
+
+    function init() {
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext('2d');
+      var btn = document.getElementById("btn");
+
+
+      // img1.onload = function(){
+      //   ctx.drawImage(img1,x,y,img1.width/8, img1.height/8)
+      // }
+
+      btn.addEventListener("click", function(){
+        if (iniciar) {
+          this.value = "Iniciar";
+          iniciar = false;
+          window.clearInterval(intervalo);
+        }
+        else {
+          iniciar = true;
+          this.value = "Detener";
+          intervalo = window.setInterval(function(){animateImage(canvas,ctx)
+          }, 70)
+        }
+      });
+
+      img1.onload = function(){
+        setImage(canvas,ctx,img1,x,y,img1.width/8, img1.height/8)
+      }
+
+    }
+
+    function setImage(canvas,ctx,img,x,y,width,height){
+      canvas.width = canvas.width;
+      ctx.drawImage(img,x,y,width,height);
+    }
+
+    function animateImage(canvas,ctx) {
+      if (x > (canvas.width - 100)) {
+        distancia = -velocidad;
+        ida = false;
+      }
+      if (x < 0) {
+        distancia = velocidad;
+        ida = true;
+      }
+      x += distancia;
+      if (ida) {
+        setImage(canvas,ctx,img1,x,y,img1.width/8,img1.height/8)
+      }
+      else {
+        setImage(canvas,ctx,img2,x,y,img2.width/8,img2.height/8)
+      }
+    }
+
+  </script>
+
+</body>
+</html>
