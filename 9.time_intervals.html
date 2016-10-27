@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas</title>
+  <style>
+    canvas {
+      border: solid;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas">
+    Your browser do not support canvas
+  </canvas>
+
+  <script>
+    var x = 10, y = 10;
+    window.addEventListener("load", init());
+
+    function init() {
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext('2d');
+
+      var intervalo = window.setInterval(function(){
+        drawCircle(canvas,ctx);
+      },1000);
+      setTimeout(function(){window.clearInterval(intervalo)},11000);
+    }
+
+    function circle(canvas,ctx,x,y){
+      ctx.arc(x,y,10,0,7);
+      ctx.fill();
+    }
+
+    function drawCircle(canvas,ctx) {
+      x += 25;
+      circle(canvas,ctx,x,y)
+    }
+
+
+  </script>
+
+</body>
+</html>
